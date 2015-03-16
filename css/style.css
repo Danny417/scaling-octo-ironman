@@ -1,0 +1,72 @@
+.jSticky-large{
+	background:transparent url(../images/stickynote-large.png) no-repeat top left;
+	background-size: contain;
+	width:300px;
+	height:304px;
+	position: absolute;
+	z-index:999999;
+}
+.jSticky-medium{
+	background:transparent url(../images/stickynote-large.png) no-repeat top left;
+	width:225px;
+	height:228px;
+	position: absolute;
+	z-index:999999;
+}
+.jSticky-delete{
+	height:14px;
+	width:14px;
+	position:absolute;
+	font-size:24px;
+	cursor:pointer;
+}
+.jSticky-medium .jStickyNote textarea, .jSticky-medium .jStickyNote p{
+	font-size: 20px;
+	font-weight:bold;
+	height:115px;
+}
+.jSticky-large .jStickyNote textarea, .jSticky-large .jStickyNote p{
+	height:220px;
+	font-size: 24px;
+	word-wrap: break-word;
+}
+.jStickyNote textarea{
+	width:75%;
+	background-color:transparent;
+	border:none;
+	font-family: 'Comic Sans MS',Textile,cursive;
+	font-size:24px;
+	overflow:hidden;
+	color:#999;
+	padding:0px;
+	margin:15px 0px 0px 24px;
+	float:left;
+	resize:none;
+}
+.jStickyNote p{
+	font-family: 'Comic Sans MS',Textile,cursive;
+	color:#444;
+	margin:15px 0px 0px 24px;
+	overflow:hidden;
+	width:75%;
+	float:left;
+}
+.jSticky-large .jSticky-create{
+	float:right;
+	width:14px;
+	height:14px;
+	margin-right:10px;
+	margin-top:245px;
+	font-size:24px;
+	cursor:pointer;
+	z-index:9999999;
+}
+.jSticky-medium .jSticky-create{
+	float:right;
+	width:14px;
+	height:14px;
+	margin-right:1px;
+	margin-top:185px;
+	font-size:20px;
+	cursor:pointer;
+}
