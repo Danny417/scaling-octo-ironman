@@ -8,4 +8,4 @@ app.get('/', function(req, res){
 	res.render('index', {date:new Date().toDateString()});
 });
 
-var server = app.listen(80);
+var server = app.listen(process.env.PORT || 80);
