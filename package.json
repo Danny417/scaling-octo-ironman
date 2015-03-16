@@ -1,0 +1,17 @@
+{
+	"name": "frozen-cove-8878",
+	"dependencies": {
+		"express": "*",
+		"ejs" : "*"
+	},
+	"engine": "node v0.10.32",
+	"description": "",
+	"version": "",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Danny417/scaling-octo-ironman.git"
+	},
+	"script" : {
+		"start": "node app"
+	}
+}
