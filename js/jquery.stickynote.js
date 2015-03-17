@@ -29,6 +29,13 @@
       $('.carousel').carousel(0).carousel('pause');
     }
     var _note_content = $(document.createElement('textarea'));
+	
+	_note_content.click(function(){
+		$(this).closest(".draggable").draggable('disable');
+	}).blur(function(){
+		$(this).closest(".draggable").draggable('enable');
+	});
+	
     var _div_note = $(document.createElement('div'))
       .addClass('jStickyNote')
       .css('cursor', 'move');
@@ -84,11 +91,12 @@
         "<span class='glyphicon glyphicon-remove-sign'></span>");
 
     _div_delete.click(function(e) {
+		console.log("delete")
       $(this).parent().remove();
     })
     var left = parseInt(Math.random() * ($('.carousel').width() - 410) +
       Math.random() * 100) + "px";
-    var _div_wrap = $(document.createElement('div'))
+    var _div_wrap = $(document.createElement('div')).addClass('draggable')
       .css({
         'position': 'absolute',
         'top': '80px',
@@ -123,6 +131,7 @@
         }
       });
     }
+	console.log(_div_wrap);
     $(o.container).append(_div_wrap);
 
     if (!!o.text) {
