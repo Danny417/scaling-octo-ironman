@@ -101,6 +101,15 @@
     <script src="../js/jquery.ui.touch-punch.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
+	
+	<script id="keyboardTemplate" type="text/template">
+		<div id='keyboard'>
+			<h3> Simulated KeyBoard/DrawTool</h3>
+			<textarea id='keyboardText'></textarea><br>
+		</div>
+	</script>
+	
+	
     <script>
       $(function() {
         var post1 = {
@@ -127,13 +136,40 @@
         reply = {
 
         };
-  			$(".myButton").stickynote({
-  				size 			 : 'large',
-  				containment		 : 'item',
-          container : '#content1',
-  				ontop			: true,
-          color			: '#000'
-  			});
+		
+		function createkeyBoardDialog(){
+				var dialog = $($("#keyboardTemplate").html()).dialog({
+				width: "500",
+				height: "350",
+				open: function(){
+					$(document.body).css({'overflow': 'hidden'});
+				},		
+				close: function(){
+					$(document.body).css({'overflow': 'auto'});
+					$(this).dialog('destroy').remove()
+				},
+			    buttons: {
+					"Post it!": function() {					
+						$.fn.stickynote.createNote({
+							size 			 : 'large',
+							containment		 : 'item',
+							container : 	'#content1',
+							ontop			: true,
+							color			: '#000',
+							text			: $('#keyboard').find('#keyboardText').val()
+						});
+						$(this).dialog('destroy').remove()
+					},
+					Cancel: function() {
+						$(this).dialog('destroy').remove()
+					}
+				}
+			});	
+		
+		}
+		$(".myButton").click(function(){
+			createkeyBoardDialog();
+		});
         post3.text = "Looking for Roommate!<br>Please call: 778-778-1234";
         $.fn.stickynote.createNote(post3);
         post3.text = "I'm BOREDDDDDDDDD!";
