@@ -6,19 +6,14 @@ body {
   color: #5a5a5a;
 }
 
-#keyboard{
-	background-color: white !important;
-	text-align: center;
-}
-#keyboard h3{
-	color: black;
-}
-
-#keyboard textarea{
-	width: 350px;
+#keyboardText{
+	width: 280px;
 	height: 225px
 }
 
+textarea {
+  overflow-y: auto;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */

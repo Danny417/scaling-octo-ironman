@@ -91,7 +91,7 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-      <a href="#" class="myButton">POST</a>
+      <a href="#" class="myButton" data-toggle="modal" data-target="#myModal">POST</a>
 
     </div><!-- /.carousel -->
     <script src="../js/jquery.min.js"></script>
@@ -101,15 +101,43 @@
     <script src="../js/jquery.ui.touch-punch.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
-	
+
 	<script id="keyboardTemplate" type="text/template">
-		<div id='keyboard'>
-			<h3> Simulated KeyBoard/DrawTool</h3>
-			<textarea id='keyboardText'></textarea><br>
-		</div>
+		<div id='keyboard' class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Simulated KeyBoard/DrawTool</h3>
+      </div>
+      <div class="panel-body">
+  			<textarea id='keyboardText'></textarea>
+  		</div>
+    </div>
 	</script>
-	
-	
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="height:100%">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Simulated KeyBoard/DrawTool</h4>
+        </div>
+        <div class="modal-body" style="height:330px">
+          <div class="jSticky-large">
+            <div class="jStickyNote">
+              <textarea id='keyboardText'></textarea>
+            </div>
+          </div>
+          <div style="float:right">
+            Text Color : <input type="text" id="textColor" class="color" onchange="colorChange()" value="999"/> <br><br>
+            Draw Color : <input type="text" id="drawColor" class="color" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="post()" data-dismiss="modal">Post It!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script type="text/javascript" src="../js/jscolor/jscolor.js"></script>
     <script>
       $(function() {
         var post1 = {
@@ -136,61 +164,41 @@
         reply = {
 
         };
-		
-		function createkeyBoardDialog(){
-				var dialog = $($("#keyboardTemplate").html()).dialog({
-				width: "500",
-				height: "350",
-				open: function(){
-					$(document.body).css({'overflow': 'hidden'});
-				},		
-				close: function(){
-					$(document.body).css({'overflow': 'auto'});
-					$(this).dialog('destroy').remove()
-				},
-			    buttons: {
-					"Post it!": function() {					
-						$.fn.stickynote.createNote({
-							size 			 : 'large',
-							containment		 : 'item',
-							container : 	'#content1',
-							ontop			: true,
-							color			: '#000',
-							text			: $('#keyboard').find('#keyboardText').val()
-						});
-						$(this).dialog('destroy').remove()
-					},
-					Cancel: function() {
-						$(this).dialog('destroy').remove()
-					}
-				}
-			});	
-		
-		}
-		$(".myButton").click(function(){
-			createkeyBoardDialog();
-		});
-        post3.text = "Looking for Roommate!<br>Please call: 778-778-1234";
+
+        post3.text = "Why have a referendum if you are going to advice people on what to vote? Even if I was voting no, I would vote yes in spite, since you are trying to rig the referendum.";
         $.fn.stickynote.createNote(post3);
         post3.text = "I'm BOREDDDDDDDDD!";
         $.fn.stickynote.createNote(post3);
-        post3.text = "SELL HP-51!!";
+        post3.text = "Hello!!";
         $.fn.stickynote.createNote(post3);
 
-        post2.text = "Sell Book for EECE 418!<br>Contact me: sell.book@gmail.com";
+        post2.text = "LOL";
         $.fn.stickynote.createNote(post2);
         post2.text = "HUH?";
         $.fn.stickynote.createNote(post2);
 
-        post1.text = "Hello!!";
+        post1.text = "I don't handle university life, university life handles me.";
         $.fn.stickynote.createNote(post1);
 
         $('.carousel').carousel({
           interval: 30000,
           pause: 'hover'
         });
-		
+
   		});
+      function colorChange() {
+        $("#keyboardText").css("color", "#"+$("#textColor").val());
+      };
+      function post() {
+          $.fn.stickynote.createNote({
+            size 			 : 'large',
+            containment		 : 'item',
+            container : 	'#content1',
+            ontop			: true,
+            color			: '#'+$("#textColor").val(),
+            text			: $('#keyboardText').val()
+          });
+      };
     </script>
   </body>
 </html>
